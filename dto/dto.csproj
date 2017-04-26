@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="DataContractAttribute.cs" />
     <Compile Include="member.cs" />
+    <Compile Include="message.cs" />
     <Compile Include="password.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="user.cs" />

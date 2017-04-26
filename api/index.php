@@ -1,1 +1,1 @@
-Hello!, Accept any URL.
+Hello!, I wwill accept any URLs.
