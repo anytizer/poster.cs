@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace tests
@@ -12,6 +13,8 @@ namespace tests
     [TestClass()]
     public class posterTests
     {
+        private string APIURL = "http://localhost:8080/api";
+
         [TestMethod()]
         [TestCategory("HTTP")]
         public void postTest()
@@ -35,7 +38,7 @@ namespace tests
             };
 
             poster p = new poster();
-            string url = "http://localhost:8080/post.php";
+            string url = this.APIURL + "/post.php";
             string posted = p.post(url, m);
 
             Assert.IsTrue(posted.Contains("posted"));
@@ -46,10 +49,52 @@ namespace tests
         public void pingPongTest()
         {
             poster p = new poster();
-            string url = "http://localhost:8080/ping.php";
+            string url = this.APIURL + "/ping.php";
             string posted = p.post(url, null);
 
             Assert.IsTrue(posted.Contains("pong"));
+        }
+
+        [TestMethod()]
+        [TestCategory("HTTP")]
+        public void dateTest()
+        {
+            poster p = new poster();
+            string url = this.APIURL + "/date.php";
+            string response = p.post(url, null);
+
+            Regex rgx = new Regex(@"^[\d]{4}\-[\d]{2}\-[\d]{2}$");
+            bool matched = rgx.IsMatch(response);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        [TestCategory("HTTP")]
+        public void timeTest()
+        {
+            poster p = new poster();
+            string url = this.APIURL + "/time.php";
+            string response = p.post(url, null);
+
+            Regex rgx = new Regex(@"^[\d]{2}\:[\d]{2}\:[\d]{2}$");
+            bool matched = rgx.IsMatch(response);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        [TestCategory("HTTP")]
+        public void datetimeTest()
+        {
+            poster p = new poster();
+            string url = this.APIURL+"/datetime.php";
+            string response = p.post(url, null);
+
+            Regex rgx = new Regex(@"^[\d]{4}\-[\d]{2}\-[\d]{2}\ [\d]{2}\:[\d]{2}\:[\d]{2}$");
+            bool matched = rgx.IsMatch(response);
+
+            Assert.IsTrue(matched);
         }
     }
 }
