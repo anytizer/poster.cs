@@ -13,8 +13,12 @@ namespace tests
     public class posterTests
     {
         [TestMethod()]
+        [TestCategory("HTTP")]
         public void postTest()
         {
+            /**
+             * Create envelope
+             */
             member m = new member()
             {
                 name = "Full Name",
@@ -35,6 +39,17 @@ namespace tests
             string posted = p.post(url, m);
 
             Assert.IsTrue(posted.Contains("posted"));
+        }
+
+        [TestMethod()]
+        [TestCategory("HTTP")]
+        public void pingPongTest()
+        {
+            poster p = new poster();
+            string url = "http://localhost:8080/ping.php";
+            string posted = p.post(url, null);
+
+            Assert.IsTrue(posted.Contains("pong"));
         }
     }
 }

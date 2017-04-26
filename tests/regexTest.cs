@@ -16,6 +16,7 @@ namespace tests
     public class regexTest
     {
         [TestMethod()]
+        [TestCategory("Regex")]
         public void dateTest()
         {
             string datetime = "2010-01-01";
@@ -27,6 +28,7 @@ namespace tests
         }
 
         [TestMethod()]
+        [TestCategory("Regex")]
         public void timeTest()
         {
             string datetime = "11:11:11";
@@ -38,6 +40,7 @@ namespace tests
         }
 
         [TestMethod()]
+        [TestCategory("Regex")]
         public void datetimeTest()
         {
             string datetime = "2010-01-01 11:11:11";
@@ -49,6 +52,7 @@ namespace tests
         }
 
         [TestMethod()]
+        [TestCategory("Regex")]
         public void numbersTest()
         {
             string datetime = "0123456789";
@@ -60,6 +64,7 @@ namespace tests
         }
 
         [TestMethod()]
+        [TestCategory("Regex")]
         public void wordTest()
         {
             string datetime = "quick";
@@ -71,6 +76,7 @@ namespace tests
         }
 
         [TestMethod()]
+        [TestCategory("Regex")]
         public void wordFailTest()
         {
             string datetime = "Quick";
