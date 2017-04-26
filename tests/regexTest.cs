@@ -1,0 +1,84 @@
+﻿using business;
+using business1;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+/**
+ * @see https://msdn.microsoft.com/en-us/library/3y21t6y4(v=vs.110).aspx
+ */
+namespace tests
+{
+    [TestClass()]
+    public class regexTest
+    {
+        [TestMethod()]
+        public void dateTest()
+        {
+            string datetime = "2010-01-01";
+            Regex rgx = new Regex(@"^[\d]{4}\-[\d]{2}\-[\d]{2}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        public void timeTest()
+        {
+            string datetime = "11:11:11";
+            Regex rgx = new Regex(@"^[\d]{2}\:[\d]{2}\:[\d]{2}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        public void datetimeTest()
+        {
+            string datetime = "2010-01-01 11:11:11";
+            Regex rgx = new Regex(@"^[\d]{4}\-[\d]{2}\-[\d]{2}\ [\d]{2}\:[\d]{2}\:[\d]{2}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        public void numbersTest()
+        {
+            string datetime = "0123456789";
+            Regex rgx = new Regex(@"^[\d]{1,}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        public void wordTest()
+        {
+            string datetime = "quick";
+            Regex rgx = new Regex(@"^[a-z]{1,}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsTrue(matched);
+        }
+
+        [TestMethod()]
+        public void wordFailTest()
+        {
+            string datetime = "Quick";
+            Regex rgx = new Regex(@"^[a-z]{1,}$");
+
+            bool matched = rgx.IsMatch(datetime);
+
+            Assert.IsFalse(matched);
+        }
+    }
+}
