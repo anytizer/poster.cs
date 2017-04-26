@@ -88,7 +88,7 @@ namespace tests
         public void datetimeTest()
         {
             poster p = new poster();
-            string url = this.APIURL+"/datetime.php";
+            string url = this.APIURL + "/datetime.php";
             string response = p.post(url, null);
 
             Regex rgx = new Regex(@"^[\d]{4}\-[\d]{2}\-[\d]{2}\ [\d]{2}\:[\d]{2}\:[\d]{2}$");
@@ -96,5 +96,23 @@ namespace tests
 
             Assert.IsTrue(matched);
         }
+
+        [TestMethod()]
+        [TestCategory("HTTP")]
+        public void asisItest()
+        {
+            string asis = "something as inpput";
+            something s = new something() { content = asis };
+
+            poster p = new poster();
+            string url = this.APIURL + "/asis.php";
+            string response = p.post(url, s);
+
+            Assert.IsTrue(response.Contains(asis));
+        }
+    }
+    internal class something
+    {
+        public string content;
     }
 }
