@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 namespace business
 {
     [DataContract]
-    public class user
+    public class signup
     {
-        public Guid id;
-
-        public string username;
-        public password password;
+        public string email;
     }
 }

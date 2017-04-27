@@ -14,9 +14,19 @@ namespace business1
     {
         public string post(string url, object data)
         {
-            string result = "";
-
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            this.postdata(httpWebRequest, data);
+            string result = this.readadata(httpWebRequest);
+
+            return result;            
+        }
+
+        /**
+         * Sends as JSON
+         */
+        private void postdata(HttpWebRequest httpWebRequest, object data)
+        {
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
@@ -29,6 +39,11 @@ namespace business1
                 streamWriter.Flush();
                 streamWriter.Close();
             }
+        }
+
+        private dynamic readadata(HttpWebRequest httpWebRequest)
+        {
+            string result = "";
 
             HttpWebResponse httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
             using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream()))

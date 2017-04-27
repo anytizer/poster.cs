@@ -53,47 +53,11 @@ namespace Loggable
         }
     }
 
-    public class Event
-    {
-        public Guid MessageID;
-        public Guid UserID;
-        public Guid DataTypeID;
-        public Guid DataReferenceID;
-        public DateTime CreatedOn;
-        public string Message;
-        public string RawJsonData;
-    }
+    
 
-    // degree of severity or importance
-    public class Levels
-    {
-        public const int TRACE = 0;
-        public const int DEBUG = 1;
-        public const int INFO = 2;
-        public const int WARNING = 3;
-        public const int ERROR = 4;
-        public const int CRITICAL = 5;
-        // exception?
-    }
-
-    /**
-     * @see https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging
-     */
-    public class LogEventIDs
-    {
-        public const int ITEM_CREATED = 1000;
-        public const int ITEM_LISTED = 4000;
-        public const int ITEM_UPDATED = 4001;
-        public const int ITEM_NOT_FOUND = 4001;
-    }
+    
 
 
-    public class Providers
-    {
-        int Console;
-        int Debug;
-        int EventSource;
-        int EventLog;
-        int TraceSource;
-    }
+    
+
 }
