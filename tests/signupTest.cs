@@ -23,7 +23,15 @@ namespace tests
             s.email = "test@example.com";
 
             poster p = new poster();
-            p.post("http://localhost/elsewhere/signup", s);
+            try
+            {
+                // non existing api gateway
+                p.post("http://localhost/elsewhere/signup", s);
+            }
+            catch(Exception)
+            {
+                // must appear here
+            }
         }
    }
 }

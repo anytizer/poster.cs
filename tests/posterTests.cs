@@ -13,8 +13,8 @@ namespace tests
     [TestClass()]
     public class posterTests
     {
-        //private string APIURL = "http://localhost:8080/api";
-        private string APIURL = "http://localhost/angular/libraries/poster.cs/api";
+        private string APIURL = "http://localhost:99/api.angular";
+        //private string APIURL = "http://localhost/angular/libraries/poster.cs/api.angular";
 
         [TestMethod()]
         [TestCategory("HTTP")]

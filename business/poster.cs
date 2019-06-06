@@ -32,7 +32,6 @@ namespace business1
 
             using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                //string json = data.serialize();
                 string json = JsonConvert.SerializeObject(data);
 
                 streamWriter.Write(json);
