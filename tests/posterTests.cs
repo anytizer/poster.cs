@@ -1,5 +1,5 @@
 ﻿using business;
-using business1;
+using business;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -114,6 +114,6 @@ namespace tests
     }
     internal class something
     {
-        public string content;
+        public string content { get; set; }
     }
 }
